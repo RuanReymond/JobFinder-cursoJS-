@@ -1,0 +1,30 @@
+{
+  "name": "job_finder",
+  "version": "1.0.0",
+  "description": "Este sistema é um portal para que programadores encontrem vagas de trabalho.",
+  "keywords": [
+    "dev",
+    "jobs",
+    "dev",
+    "oportunity",
+    "find",
+    "job"
+  ],
+  "license": "ISC",
+  "author": "\"Ruan Reymond <reymondruan4@gmail.com>",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.4.0",
+    "express": "^5.3.0",
+    "express-handlebars": "^9.0.4",
+    "sequelizer": "^1.1.4",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
