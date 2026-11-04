@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Ícone de empresa</title>
+  <g stroke="#071b55" stroke-width="15" stroke-linejoin="round">
+    <path fill="#3299e8" d="M166 143V78h180v65"/>
+    <path fill="#3299e8" d="M76 158h91v285H76zM345 158h91v285h-91z"/>
+    <path fill="#2fc2df" d="M159 118h194v325H159z"/>
+  </g>
+  <g fill="#fff9df" stroke="#071b55" stroke-width="14" stroke-linejoin="round">
+    <path d="M207 151h39v39h-39zM278 151h39v39h-39zM207 220h39v39h-39zM278 220h39v39h-39zM207 289h39v39h-39zM278 289h39v39h-39z"/>
+    <path d="M215 363h82v80h-82z"/>
+    <path d="M98 198h35v35H98zM98 267h35v35H98zM98 336h35v35H98zM379 198h35v35h-35zM379 267h35v35h-35zM379 336h35v35h-35z"/>
+  </g>
+  <path fill="none" stroke="#071b55" stroke-linecap="round" stroke-width="15" d="M76 391v52h360v-52"/>
+</svg>

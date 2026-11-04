@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const db = require('./db/connection');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const PORT = 3000;
 
@@ -11,6 +12,7 @@ app.listen(PORT, function() {
 
 //body parser
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 //db connection
@@ -25,7 +27,7 @@ db
 
 // routes
 app.get('/', (req, res) => {
-    res.send('funcionando');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 //jobs routes

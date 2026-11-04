@@ -1,0 +1,247 @@
+/* Base */
+:root {
+    --jobfinder-red: #f2383d;
+    --jobfinder-yellow: #fff6c9;
+    --jobfinder-purple: #7926d2;
+    --jobfinder-text: #343a40;
+}
+
+body {
+    padding-top: 72px;
+    color: var(--jobfinder-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Barra superior */
+.navbar {
+    min-height: 72px;
+    padding: 0.75rem 1.5rem;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+    z-index: 10;
+}
+
+.navbar-brand {
+    color: #343a40;
+    font-size: 1.35rem;
+}
+
+.navbar .nav-link {
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--jobfinder-red);
+    background: var(--jobfinder-red);
+    color: #fff;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible {
+    border-color: var(--jobfinder-red);
+    background: #fff;
+    color: var(--jobfinder-red);
+}
+
+.navbar .nav-link.btn-primary {
+    margin-left: 0.75rem;
+    padding: 0.7rem 1rem;
+}
+
+/* Banner de busca */
+#top-container {
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 85px max(7vw, 24px) 65px;
+    color: #fff;
+    text-align: center;
+    background:
+        linear-gradient(90deg, rgb(0 8 22 / 70%), rgb(0 18 45 / 45%), rgb(0 7 20 / 70%)),
+        url("/img/banner-city.jpg") center 48% / cover no-repeat;
+}
+
+#main-tittle {
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    color: #fff;
+    font-size: clamp(2.25rem, 5vw, 3.6rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+#main-subtitle {
+    max-width: 900px;
+    margin: 0 auto 70px;
+    color: #f1f3f5;
+    font-size: clamp(1rem, 1.7vw, 1.35rem);
+}
+
+#search-form {
+    width: min(100%, 1300px);
+    display: flex;
+    align-items: stretch;
+    margin: auto 0 0;
+}
+
+#search-form .form-group {
+    padding: 0;
+}
+
+#search-form input {
+    min-height: 68px;
+    padding: 0.75rem 1rem;
+    border: 0;
+    border-radius: 0;
+    font-size: 1.25rem;
+}
+
+#search-form > .col-md-2 {
+    padding: 0;
+}
+
+#search-form .btn {
+    min-height: 68px;
+    border-radius: 0;
+    font-size: 1.2rem;
+}
+
+/* Lista de vagas */
+#jobs-container {
+    padding-top: 48px;
+    padding-bottom: 56px;
+}
+
+#job-list-title {
+    margin: 0 0 32px;
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 400;
+}
+
+#jobs-list {
+    gap: 12px;
+    border: 0;
+}
+
+#jobs-list .list-group-item {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 22px 28px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+    background: #fff;
+}
+
+#jobs-list .list-group-item.new-job {
+    background: var(--jobfinder-yellow);
+}
+
+#jobs-list img {
+    width: 92px;
+    height: 92px;
+    flex: 0 0 92px;
+    object-fit: contain;
+}
+
+#jobs-list p,
+#jobs-list h2 {
+    margin: 0;
+}
+
+#jobs-list p:first-of-type {
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+#jobs-list h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+}
+
+#jobs-list p:nth-of-type(2) {
+    margin-top: 7px;
+    color: #60656a;
+}
+
+#jobs-list .new-job-label {
+    margin-left: auto;
+    padding: 0.45rem 0.75rem;
+    color: #403700;
+    background: #ffd51c;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#jobs-list .btn-primary,
+.btn-primary {
+    --bs-btn-bg: var(--jobfinder-red);
+    --bs-btn-border-color: var(--jobfinder-red);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: var(--jobfinder-red);
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: var(--jobfinder-red);
+    --bs-btn-active-color: var(--jobfinder-red);
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: var(--jobfinder-red);
+    --bs-btn-focus-shadow-rgb: 242, 56, 61;
+    border-radius: 0;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+#jobs-list .btn-primary {
+    min-width: 140px;
+    margin-left: auto;
+    padding: 0.85rem 1rem;
+}
+
+@media (max-width: 767.98px) {
+    .navbar {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .navbar .nav-link.btn-primary {
+        width: fit-content;
+        margin: 0.5rem 0 0;
+    }
+
+    #top-container {
+        min-height: 440px;
+        padding: 65px 20px 40px;
+    }
+
+    #main-subtitle {
+        margin-bottom: 48px;
+    }
+
+    #search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #jobs-container {
+        padding: 34px 18px 44px;
+    }
+
+    #jobs-list .list-group-item {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        padding: 18px;
+    }
+
+    #jobs-list img {
+        width: 66px;
+        height: 66px;
+        flex-basis: 66px;
+    }
+
+    #jobs-list .new-job-label {
+        margin-left: auto;
+    }
+
+    #jobs-list .btn-primary {
+        width: 100%;
+        margin-left: 0;
+    }
+}
