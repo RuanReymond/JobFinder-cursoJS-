@@ -1,19 +1,24 @@
 const express = require('express');
+const { engine } = require('express-handlebars');
 const app = express();
+const path = require('path');
 const db = require('./db/connection');
 const bodyParser = require('body-parser');
-const path = require('path');
 
 const PORT = 3000;
-
-app.listen(PORT, function() {
-    console.log(`Express rodando na porta ${PORT}`);
-});
 
 //body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//handle bars
+app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', engine({ defaultLayout: 'main', extname: '.hbs' }));
+app.set('view engine', 'hbs');
+
+
+//static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 //db connection
 db
@@ -27,8 +32,16 @@ db
 
 // routes
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.render('index');
+});
+
+app.get('/add.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'add.html'));
 });
 
 //jobs routes
 app.use('/jobs', require('./routes/jobs'));
+
+app.listen(PORT, function() {
+    console.log(`Express rodando na porta ${PORT}`);
+});
