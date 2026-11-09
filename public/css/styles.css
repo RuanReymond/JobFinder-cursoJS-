@@ -271,6 +271,85 @@ body {
     font-weight: 600;
 }
 
+/* Detalhes da vaga */
+#job-view-container {
+    position: relative;
+    max-width: 1140px;
+    min-height: calc(100vh - 72px);
+    padding-top: 68px;
+    padding-bottom: 56px;
+}
+
+#job-view-container > .row {
+    display: block;
+    margin: 0;
+}
+
+#job-view-container .back-link {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    display: inline-block;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--jobfinder-red);
+    background: var(--jobfinder-red);
+    color: #fff;
+    text-decoration: none;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+#job-view-container .back-link:hover,
+#job-view-container .back-link:focus-visible {
+    border-color: var(--jobfinder-red);
+    background: #fff;
+    color: var(--jobfinder-red);
+}
+
+#img-container {
+    margin-bottom: 24px;
+}
+
+#img-container img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+#job-view-container .main-clor {
+    margin: 0 0 28px;
+    color: #df5555;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 400;
+}
+
+#job-view-container p {
+    margin: 0 0 16px;
+    line-height: 1.55;
+}
+
+#job-view-container .bold {
+    font-weight: 700;
+}
+
+#job-view-container .job-desc {
+    margin-bottom: 18px;
+    color: #555b61;
+}
+
+#job-view-container .main-color {
+    color: #df5555;
+}
+
+#job-view-container a.main-color:not(.back-link) {
+    text-decoration: none;
+}
+
+#job-view-container a.main-color:not(.back-link):hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 767.98px) {
     .navbar {
         padding-right: 1rem;
@@ -306,6 +385,21 @@ body {
 
     #form-box {
         padding: 24px 18px;
+    }
+
+    #job-view-container {
+        min-height: calc(100vh - 72px);
+        padding: 72px 18px 44px;
+    }
+
+    #job-view-container .back-link {
+        top: 12px;
+        left: 18px;
+    }
+
+    #img-container img {
+        width: 84px;
+        height: 84px;
     }
 
     #jobs-list .list-group-item {
