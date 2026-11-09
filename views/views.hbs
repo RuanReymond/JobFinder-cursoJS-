@@ -1,17 +1,32 @@
-<div id="job-view-container" class="container">
-    <div class="row text-center">
-        <a class="back-link main-color" href="/">Voltar</a>
-        <div id="img-container" class="col-md-12">
-            <img src="/img/company.svg" alt="Company">        
-        </div>
-        <div class="col-md-12">
-            <h1 class="main-clor">{{job.dataValues.title}}</h1>
-            <p class="bold">Quem eles estão buscando</p>
+<main id="job-view-container" class="container">
+    <a class="back-link" href="/">&larr; Voltar</a>
+
+    <article class="job-detail">
+        <header class="job-detail-header">
+            <img class="job-detail-logo" src="/img/company.svg" alt="Logo da empresa">
+            <h1 class="job-detail-title">{{job.dataValues.title}}</h1>
+            <p class="job-detail-company">{{job.dataValues.company}}</p>
+        </header>
+
+        <section class="job-section">
+            <h2 class="job-section-title">Quem eles estão buscando</h2>
             <p class="job-desc">{{job.dataValues.description}}</p>
-            <p><span class="bold">O salário informado é de:</span> R${{job.dataValues.salary}}</p>
-            <p>
-                Para trabalhar na empresa <span class="bold main-color">{{job.dataValues.company}}</span> envie um e-mail para a <a href="mailto:{{job.dataValues.email}}" class="main-color">{{job.dataValues.email}}</a> com seu currículo anexado.
-            </p>
-        </div>
-    </div>
-</div>
+        </section>
+
+        <section class="job-section">
+            <div class="job-salary-box">
+                <strong>O salário informado é de:</strong>
+                <span>R${{job.dataValues.salary}}</span>
+            </div>
+        </section>
+
+        <section class="job-apply">
+            Para trabalhar na empresa <span class="highlight">{{job.dataValues.company}}</span>
+            envie um e-mail para <a href="mailto:{{job.dataValues.email}}">{{job.dataValues.email}}</a>
+            com seu currículo anexado.
+            <div>
+                <a class="btn btn-primary" href="mailto:{{job.dataValues.email}}">Enviar currículo</a>
+            </div>
+        </section>
+    </article>
+</main>

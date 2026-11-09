@@ -1,39 +1,47 @@
-    <div id="add-form-container" class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">Dilvulgue a vaga preenchendo o formulario</h1>
+<main id="add-form-container" class="container">
+    <h1>Divulgue a vaga preenchendo o formulário</h1>
+
+    <div id="form-box">
+        <h2>Preencha os dados da melhor forma possível para encontrar mais rápido seu dev</h2>
+
+        <form action="/jobs/add" method="POST">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="title">Título da vaga</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Digite o título da vaga" required>
+                    <small id="titleHelp" class="form-text d-block">O título da vaga deve ser descritivo e atrativo.</small>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="company">Empresa contratante</label>
+                    <input type="text" class="form-control" id="company" name="company" placeholder="Digite o nome da empresa" required>
+                    <small id="companyHelp" class="form-text d-block">O nome da empresa deve ser completo e correto.</small>
+                </div>
+
+                <div class="col-12">
+                    <label for="description">Descrição da vaga</label>
+                    <textarea class="form-control" id="description" name="description" rows="4" maxlength="255" placeholder="Digite a descrição da vaga" required></textarea>
+                    <small id="descriptionHelp" class="form-text d-block">A descrição deve detalhar as responsabilidades e requisitos da vaga (máximo de 255 caracteres).</small>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="email">E-mail de contato</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail de contato" required>
+                    <small id="emailHelp" class="form-text d-block">O e-mail deve ser válido e ativo.</small>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="salary">Salário</label>
+                    <input type="text" class="form-control" id="salary" name="salary" placeholder="Digite o salário da vaga" required>
+                    <small id="salaryHelp" class="form-text d-block">O salário deve ser realista e competitivo.</small>
+                </div>
             </div>
-            <div id="form-box" class="col-md-12">
-                <h2>preencha os dados da melhor forma possivel para encontrar mais rapido seu dev</h2>
-                <form action="/jobs/add" method="POST">
-                    <div class="form-group">
-                        <label for="title">Titulo da vaga</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Digite o titulo da vaga" required>
-                        <small id="titleHelp" class="form-text text-muted">O titulo da vaga deve ser descritivo e atrativo.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Descrição da vaga</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Digite a descrição da vaga" required>
-                        <small id="descriptionHelp" class="form-text text-muted">A descrição deve detalhar as responsabilidades e requisitos da vaga.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Empresa Contratante</label>
-                        <input type="text" class="form-control" id="company" name="company" placeholder="Digite o nome da empresa" required>
-                        <small id="companyHelp" class="form-text text-muted">O nome da empresa deve ser completo e correto.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email de contato</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite o email de contato" required>
-                        <small id="emailHelp" class="form-text text-muted">O email deve ser válido e ativo.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="salary">Salário</label>
-                        <input type="text" class="form-control" id="salary" name="salary" placeholder="Digite o salário da vaga" required>
-                        <small id="salaryHelp" class="form-text text-muted">O salário deve ser realista e competitivo.</small>
-                    </div>
-                    <input type="hidden" name="new_job" value="1">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
+
+            <input type="hidden" name="new_job" value="1">
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Enviar</button>
             </div>
-        </div>
+        </form>
     </div>
+</main>

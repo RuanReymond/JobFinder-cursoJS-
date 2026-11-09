@@ -1,425 +1,665 @@
-/* Base */
+/* ==========================================================================
+   1. Variáveis e base
+   ========================================================================== */
 :root {
-    --jobfinder-red: #f2383d;
-    --jobfinder-yellow: #fff6c9;
-    --jobfinder-purple: #7926d2;
-    --jobfinder-text: #343a40;
+    --jf-red: #f2383d;
+    --jf-red-soft: #df5555;
+    --jf-yellow: #fff6c9;
+    --jf-yellow-strong: #ffd51c;
+    --jf-purple: #7926d2;
+    --jf-text: #343a40;
+    --jf-muted: #60656a;
+    --jf-border: #e3e5e8;
+    --jf-surface: #ffffff;
+    --jf-bg: #f6f7f9;
+ 
+    --jf-radius: 10px;
+    --jf-shadow-sm: 0 1px 3px rgb(16 24 40 / 8%);
+    --jf-shadow-md: 0 8px 24px rgb(16 24 40 / 10%);
+    --jf-transition: 160ms ease;
+    --jf-navbar-height: 72px;
 }
-
+ 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+ 
+html {
+    scroll-behavior: smooth;
+}
+ 
 body {
-    padding-top: 72px;
-    color: var(--jobfinder-text);
-    font-family: Arial, Helvetica, sans-serif;
+    padding-top: var(--jf-navbar-height);
+    background-color: var(--jf-bg);
+    color: var(--jf-text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
-
-/* Barra superior */
+ 
+img {
+    max-width: 100%;
+}
+ 
+:focus-visible {
+    outline: 3px solid rgb(242 56 61 / 35%);
+    outline-offset: 2px;
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+ 
+ 
+/* ==========================================================================
+   2. Botões
+   ========================================================================== */
+.btn-primary {
+    --bs-btn-bg: var(--jf-red);
+    --bs-btn-border-color: var(--jf-red);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: var(--jf-red);
+    --bs-btn-hover-bg: #fff;
+    --bs-btn-hover-border-color: var(--jf-red);
+    --bs-btn-active-color: var(--jf-red);
+    --bs-btn-active-bg: #fff;
+    --bs-btn-active-border-color: var(--jf-red);
+    --bs-btn-focus-shadow-rgb: 242, 56, 61;
+ 
+    border-radius: 6px;
+    font-weight: 600;
+    transition:
+        color var(--jf-transition),
+        background-color var(--jf-transition),
+        border-color var(--jf-transition),
+        box-shadow var(--jf-transition);
+}
+ 
+ 
+/* ==========================================================================
+   3. Barra de navegação
+   ========================================================================== */
 .navbar {
-    min-height: 72px;
-    padding: 0.75rem 1.5rem;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
-    z-index: 10;
+    min-height: var(--jf-navbar-height);
+    border-bottom: 1px solid var(--jf-border);
+    background-color: var(--jf-surface) !important;
+    box-shadow: var(--jf-shadow-sm);
+    z-index: 1030;
 }
-
+ 
 .navbar-brand {
-    color: #343a40;
-    font-size: 1.35rem;
+    color: var(--jf-text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
-
+ 
+.navbar-brand:hover,
+.navbar-brand:focus-visible {
+    color: var(--jf-red);
+}
+ 
+.navbar-toggler {
+    border-color: var(--jf-border);
+}
+ 
 .navbar .nav-link {
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--jobfinder-red);
-    background: var(--jobfinder-red);
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--jf-red);
+    border-radius: 6px;
+    background-color: var(--jf-red);
     color: #fff;
-    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+    font-weight: 600;
+    text-align: center;
+    transition:
+        color var(--jf-transition),
+        background-color var(--jf-transition),
+        border-color var(--jf-transition);
 }
-
+ 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus-visible {
-    border-color: var(--jobfinder-red);
-    background: #fff;
-    color: var(--jobfinder-red);
+    background-color: #fff;
+    color: var(--jf-red);
 }
-
-.navbar .nav-link.btn-primary {
+ 
+.navbar .nav-item + .nav-item {
     margin-left: 0.75rem;
-    padding: 0.7rem 1rem;
 }
-
-/* Banner de busca */
+ 
+ 
+/* ==========================================================================
+   4. Banner de busca (home)
+   ========================================================================== */
 #top-container {
-    min-height: 520px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 85px max(7vw, 24px) 65px;
+    justify-content: center;
+    min-height: 480px;
+    padding: 72px max(6vw, 24px);
+    background:
+        linear-gradient(90deg, rgb(0 8 22 / 72%), rgb(0 18 45 / 50%), rgb(0 7 20 / 72%)),
+        url("/img/banner-city.jpg") center 48% / cover no-repeat;
     color: #fff;
     text-align: center;
-    background:
-        linear-gradient(90deg, rgb(0 8 22 / 70%), rgb(0 18 45 / 45%), rgb(0 7 20 / 70%)),
-        url("/img/banner-city.jpg") center 48% / cover no-repeat;
 }
-
-#main-tittle {
-    max-width: 1100px;
-    margin: 0 auto 24px;
-    color: #fff;
-    font-size: clamp(2.25rem, 5vw, 3.6rem);
-    font-weight: 400;
-    line-height: 1.2;
-}
-
-#main-subtitle {
+ 
+#main-title {
     max-width: 900px;
-    margin: 0 auto 70px;
-    color: #f1f3f5;
-    font-size: clamp(1rem, 1.7vw, 1.35rem);
+    margin: 0 0 16px;
+    color: #fff;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
-
+ 
+#main-subtitle {
+    max-width: 680px;
+    margin: 0 0 40px;
+    color: #f1f3f5;
+    font-size: clamp(1rem, 1.7vw, 1.25rem);
+}
+ 
 #search-form {
-    width: min(100%, 1300px);
     display: flex;
     align-items: stretch;
-    margin: auto 0 0;
+    gap: 8px;
+    width: min(100%, 780px);
+    padding: 8px;
+    border-radius: var(--jf-radius);
+    background-color: var(--jf-surface);
+    box-shadow: var(--jf-shadow-md);
 }
-
-#search-form .form-group {
-    padding: 0;
-}
-
-#search-form input {
-    min-height: 68px;
+ 
+#search-form .search-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 56px;
     padding: 0.75rem 1rem;
     border: 0;
-    border-radius: 0;
-    font-size: 1.25rem;
+    border-radius: 6px;
+    box-shadow: none;
+    font-size: 1.1rem;
 }
-
-#search-form > .col-md-2 {
-    padding: 0;
+ 
+#search-form .search-input:focus {
+    box-shadow: none;
 }
-
-#search-form .btn {
-    min-height: 68px;
-    border-radius: 0;
-    font-size: 1.2rem;
+ 
+#search-form .search-button {
+    flex: 0 0 auto;
+    min-width: 140px;
+    min-height: 56px;
+    font-size: 1.1rem;
 }
-
-/* Lista de vagas */
+ 
+ 
+/* ==========================================================================
+   5. Lista de vagas (home)
+   ========================================================================== */
 #jobs-container {
     padding-top: 48px;
-    padding-bottom: 56px;
-}
-
-#job-list-title {
-    margin: 0 0 32px;
-    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-    font-weight: 400;
-}
-
-#jobs-list {
-    gap: 12px;
-    border: 0;
-}
-
-#jobs-list .list-group-item {
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    padding: 22px 28px;
-    border: 1px solid #dedede;
-    border-radius: 3px;
-    background: #fff;
-}
-
-#jobs-list .list-group-item.new-job {
-    background: var(--jobfinder-yellow);
-}
-
-#jobs-list img {
-    width: 92px;
-    height: 92px;
-    flex: 0 0 92px;
-    object-fit: contain;
-}
-
-#jobs-list p,
-#jobs-list h2 {
-    margin: 0;
-}
-
-#jobs-list p:first-of-type {
-    margin-bottom: 6px;
-    font-size: 1rem;
-}
-
-#jobs-list h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 400;
-}
-
-#jobs-list p:nth-of-type(2) {
-    margin-top: 7px;
-    color: #60656a;
-}
-
-#jobs-list .new-job-label {
-    margin-left: auto;
-    padding: 0.45rem 0.75rem;
-    color: #403700;
-    background: #ffd51c;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-#jobs-list .btn-primary,
-.btn-primary {
-    --bs-btn-bg: var(--jobfinder-red);
-    --bs-btn-border-color: var(--jobfinder-red);
-    --bs-btn-color: #fff;
-    --bs-btn-hover-color: var(--jobfinder-red);
-    --bs-btn-hover-bg: #fff;
-    --bs-btn-hover-border-color: var(--jobfinder-red);
-    --bs-btn-active-color: var(--jobfinder-red);
-    --bs-btn-active-bg: #fff;
-    --bs-btn-active-border-color: var(--jobfinder-red);
-    --bs-btn-focus-shadow-rgb: 242, 56, 61;
-    border-radius: 0;
-    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
-}
-
-#jobs-list .btn-primary {
-    min-width: 140px;
-    margin-left: auto;
-    padding: 0.85rem 1rem;
-}
-
-/* Formulário para publicar uma vaga */
-#add-form-container {
-    max-width: 1180px;
-    padding-top: 22px;
     padding-bottom: 64px;
 }
-
-#add-form-container h1 {
-    margin: 0 0 20px;
-    color: var(--jobfinder-text);
-    font-size: clamp(2rem, 3.8vw, 2.75rem);
-    font-weight: 400;
-    line-height: 1.25;
+ 
+#job-list-title {
+    margin: 0 0 24px;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
-
+ 
+#jobs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 0;
+    border: 0;
+    list-style: none;
+}
+ 
+.job-card {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 26px;
+    border: 1px solid var(--jf-border);
+    border-radius: var(--jf-radius);
+    background-color: var(--jf-surface);
+    box-shadow: var(--jf-shadow-sm);
+    transition: transform var(--jf-transition), box-shadow var(--jf-transition);
+}
+ 
+.job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--jf-shadow-md);
+}
+ 
+.job-card.new-job {
+    border-color: #f0dd7a;
+    background-color: var(--jf-yellow);
+}
+ 
+.job-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+ 
+.job-info {
+    min-width: 0;
+}
+ 
+.job-company {
+    margin: 0 0 2px;
+    color: var(--jf-muted);
+    font-size: 0.95rem;
+}
+ 
+.job-title {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+ 
+.job-salary {
+    margin: 6px 0 0;
+    color: var(--jf-muted);
+    font-weight: 500;
+}
+ 
+.job-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+ 
+.new-job-label {
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background-color: var(--jf-yellow-strong);
+    color: #403700;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+ 
+.job-actions .btn {
+    min-width: 140px;
+    padding: 0.7rem 1rem;
+}
+ 
+.jobs-empty {
+    padding: 40px 24px;
+    border: 1px dashed #cfd3d8;
+    border-radius: var(--jf-radius);
+    background-color: var(--jf-surface);
+    color: var(--jf-muted);
+    text-align: center;
+}
+ 
+ 
+/* ==========================================================================
+   6. Formulário de nova vaga
+   ========================================================================== */
+#add-form-container {
+    max-width: 920px;
+    padding-top: 40px;
+    padding-bottom: 64px;
+}
+ 
+#add-form-container h1 {
+    margin: 0 0 24px;
+    font-size: clamp(1.7rem, 3.8vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    text-align: center;
+}
+ 
 #form-box {
     padding: clamp(24px, 4vw, 48px);
-    border: 1px solid #ececec;
-    border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgb(28 39 49 / 6%);
+    border: 1px solid var(--jf-border);
+    border-radius: var(--jf-radius);
+    background-color: var(--jf-surface);
+    box-shadow: var(--jf-shadow-sm);
 }
-
+ 
 #form-box h2 {
-    margin: 0 0 30px;
-    color: #df5555;
-    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    margin: 0 0 28px;
+    padding-left: 14px;
+    border-left: 4px solid var(--jf-red);
+    color: var(--jf-red-soft);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
     font-weight: 700;
-    line-height: 1.55;
+    line-height: 1.5;
 }
-
-#form-box .form-group {
-    margin-bottom: 18px;
-}
-
+ 
 #form-box label {
     display: inline-block;
-    margin-bottom: 8px;
-    color: var(--jobfinder-text);
+    margin-bottom: 6px;
+    color: var(--jf-text);
     font-weight: 600;
 }
-
+ 
 #form-box .form-control {
-    min-height: 40px;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #c9c9c9;
-    border-radius: 3px;
+    min-height: 44px;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #c9ccd1;
+    border-radius: 6px;
     background-color: #f8f9fa;
-    color: var(--jobfinder-text);
+    color: var(--jf-text);
+    transition: border-color var(--jf-transition), box-shadow var(--jf-transition), background-color var(--jf-transition);
 }
-
-#form-box #description {
-    min-height: 66px;
+ 
+#form-box textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
 }
-
+ 
 #form-box .form-control:focus {
     border-color: #ef8b8e;
+    background-color: #fff;
     box-shadow: 0 0 0 0.2rem rgb(242 56 61 / 16%);
 }
-
+ 
 #form-box .form-text {
-    display: block;
     margin-top: 6px;
     color: #6c757d;
     font-size: 0.875rem;
     line-height: 1.45;
 }
-
-#form-box button[type="submit"] {
-    min-width: 150px;
-    min-height: 46px;
-    margin-top: 4px;
-    padding: 0.65rem 1.2rem;
-    font-weight: 600;
+ 
+.form-actions {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--jf-border);
 }
-
-/* Detalhes da vaga */
+ 
+.form-actions .btn {
+    min-width: 160px;
+    min-height: 48px;
+    padding: 0.65rem 1.4rem;
+}
+ 
+ 
+/* ==========================================================================
+   7. Detalhes da vaga
+   ========================================================================== */
 #job-view-container {
-    position: relative;
-    max-width: 1140px;
-    min-height: calc(100vh - 72px);
-    padding-top: 68px;
-    padding-bottom: 56px;
+    max-width: 820px;
+    padding-top: 32px;
+    padding-bottom: 64px;
 }
-
-#job-view-container > .row {
-    display: block;
-    margin: 0;
-}
-
-#job-view-container .back-link {
-    position: absolute;
-    top: 20px;
-    left: 12px;
-    display: inline-block;
-    padding: 0.45rem 0.75rem;
-    border: 1px solid var(--jobfinder-red);
-    background: var(--jobfinder-red);
+ 
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--jf-red);
+    border-radius: 6px;
+    background-color: var(--jf-red);
     color: #fff;
+    font-weight: 600;
     text-decoration: none;
-    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+    transition:
+        color var(--jf-transition),
+        background-color var(--jf-transition),
+        border-color var(--jf-transition);
 }
-
-#job-view-container .back-link:hover,
-#job-view-container .back-link:focus-visible {
-    border-color: var(--jobfinder-red);
-    background: #fff;
-    color: var(--jobfinder-red);
+ 
+.back-link:hover,
+.back-link:focus-visible {
+    background-color: #fff;
+    color: var(--jf-red);
 }
-
-#img-container {
-    margin-bottom: 24px;
+ 
+.job-detail {
+    padding: clamp(24px, 4vw, 48px);
+    border: 1px solid var(--jf-border);
+    border-radius: var(--jf-radius);
+    background-color: var(--jf-surface);
+    box-shadow: var(--jf-shadow-sm);
 }
-
-#img-container img {
-    display: block;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
+ 
+.job-detail-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--jf-border);
+    text-align: center;
+}
+ 
+.job-detail-logo {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 16px;
     object-fit: contain;
 }
-
-#job-view-container .main-clor {
-    margin: 0 0 28px;
-    color: #df5555;
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: 400;
+ 
+.job-detail-title {
+    margin: 0;
+    color: var(--jf-red-soft);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
 }
-
-#job-view-container p {
-    margin: 0 0 16px;
-    line-height: 1.55;
+ 
+.job-detail-company {
+    margin: 8px 0 0;
+    color: var(--jf-muted);
+    font-size: 1.05rem;
 }
-
-#job-view-container .bold {
+ 
+.job-section {
+    margin-bottom: 24px;
+}
+ 
+.job-section-title {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
     font-weight: 700;
 }
-
-#job-view-container .job-desc {
-    margin-bottom: 18px;
+ 
+.job-desc {
+    margin: 0;
     color: #555b61;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
 }
-
-#job-view-container .main-color {
-    color: #df5555;
+ 
+.job-salary-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 10px;
+    padding: 16px 20px;
+    border-left: 4px solid var(--jf-red);
+    border-radius: 6px;
+    background-color: var(--jf-yellow);
 }
-
-#job-view-container a.main-color:not(.back-link) {
+ 
+.job-salary-box strong {
+    font-weight: 700;
+}
+ 
+.job-apply {
+    margin: 0;
+    padding: 20px;
+    border: 1px solid var(--jf-border);
+    border-radius: var(--jf-radius);
+    background-color: var(--jf-bg);
+    line-height: 1.6;
+}
+ 
+.job-apply .highlight {
+    color: var(--jf-red-soft);
+    font-weight: 700;
+}
+ 
+.job-apply a:not(.btn) {
+    color: var(--jf-red-soft);
+    font-weight: 600;
+    overflow-wrap: anywhere;
     text-decoration: none;
 }
-
-#job-view-container a.main-color:not(.back-link):hover {
+ 
+.job-apply a:not(.btn):hover {
     text-decoration: underline;
 }
-
+ 
+.job-apply .btn {
+    margin-top: 16px;
+    padding: 0.7rem 1.4rem;
+}
+ 
+ 
+/* ==========================================================================
+   8. Responsividade
+   ========================================================================== */
+ 
+/* Tablets e telas médias (menu colapsado) */
+@media (max-width: 991.98px) {
+    .navbar .navbar-collapse {
+        padding-top: 12px;
+    }
+ 
+    .navbar .nav-item + .nav-item {
+        margin-top: 8px;
+        margin-left: 0;
+    }
+ 
+    .job-card {
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 16px 20px;
+    }
+ 
+    .job-logo {
+        width: 64px;
+        height: 64px;
+    }
+ 
+    .job-actions {
+        grid-column: 1 / -1;
+        justify-content: space-between;
+    }
+ 
+    .job-actions .btn {
+        flex: 1 1 auto;
+    }
+}
+ 
+/* Celulares */
 @media (max-width: 767.98px) {
-    .navbar {
-        padding-right: 1rem;
-        padding-left: 1rem;
-    }
-
-    .navbar .nav-link.btn-primary {
-        width: fit-content;
-        margin: 0.5rem 0 0;
-    }
-
     #top-container {
-        min-height: 440px;
-        padding: 65px 20px 40px;
+        min-height: 400px;
+        padding: 56px 20px 48px;
     }
-
+ 
     #main-subtitle {
-        margin-bottom: 48px;
+        margin-bottom: 32px;
     }
-
+ 
     #search-form {
         flex-direction: column;
-        gap: 10px;
+        padding: 10px;
     }
-
+ 
+    #search-form .search-input,
+    #search-form .search-button {
+        width: 100%;
+        min-height: 52px;
+    }
+ 
+    #search-form .search-input {
+        border: 1px solid var(--jf-border);
+        font-size: 1rem;
+    }
+ 
     #jobs-container {
-        padding: 34px 18px 44px;
+        padding: 32px 16px 48px;
     }
-
+ 
+    .job-card {
+        padding: 18px;
+    }
+ 
     #add-form-container {
-        padding: 28px 18px 44px;
+        padding: 28px 16px 48px;
     }
-
+ 
     #form-box {
         padding: 24px 18px;
     }
-
-    #job-view-container {
-        min-height: calc(100vh - 72px);
-        padding: 72px 18px 44px;
-    }
-
-    #job-view-container .back-link {
-        top: 12px;
-        left: 18px;
-    }
-
-    #img-container img {
-        width: 84px;
-        height: 84px;
-    }
-
-    #jobs-list .list-group-item {
-        flex-wrap: wrap;
-        gap: 12px 18px;
-        padding: 18px;
-    }
-
-    #jobs-list img {
-        width: 66px;
-        height: 66px;
-        flex-basis: 66px;
-    }
-
-    #jobs-list .new-job-label {
-        margin-left: auto;
-    }
-
-    #jobs-list .btn-primary {
+ 
+    .form-actions .btn {
         width: 100%;
-        margin-left: 0;
+    }
+ 
+    #job-view-container {
+        padding: 24px 16px 48px;
+    }
+ 
+    .job-detail {
+        padding: 24px 18px;
+    }
+ 
+    .job-detail-logo {
+        width: 80px;
+        height: 80px;
+    }
+ 
+    .job-apply .btn {
+        width: 100%;
+    }
+}
+ 
+/* Celulares pequenos */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+ 
+    .job-card {
+        grid-template-columns: 56px minmax(0, 1fr);
+        gap: 14px 16px;
+    }
+ 
+    .job-logo {
+        width: 56px;
+        height: 56px;
+    }
+ 
+    .job-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+ 
+    .new-job-label {
+        align-self: flex-start;
+    }
+ 
+    .job-actions .btn {
+        width: 100%;
     }
 }
