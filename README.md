@@ -28,7 +28,7 @@ Projeto desenvolvido durante um curso de JavaScript, com back-end em Node.js e i
 ## Funcionalidades
 
 - **Listagem de vagas:** as mais recentes aparecem primeiro, e as vagas novas recebem destaque amarelo e o selo "Nova".
-- **Busca:** pesquisa por título da vaga, com mensagem amigável quando nada é encontrado.
+- **Busca:** pesquisa pelo título da vaga ou pelo nome da empresa, com mensagem amigável quando nada é encontrado.
 - **Detalhes da vaga:** descrição, salário informado e botão para enviar o currículo por e-mail.
 - **Cadastro de vagas:** formulário com validação nativa do navegador (campos obrigatórios e e-mail válido).
 - **Layout responsivo:** menu colapsável, busca e cards que se reorganizam em telas pequenas, com breakpoints para tablets e celulares.
@@ -80,7 +80,7 @@ Projeto desenvolvido durante um curso de JavaScript, com back-end em Node.js e i
 
 ### Banco de dados
 
-O banco é um arquivo SQLite local em `db/app.db`, com a tabela `jobs`. Se o arquivo não existir, crie a tabela com o comando abaixo (ele também cria o arquivo do banco):
+O banco é um arquivo SQLite local em `db/app.db`, com a tabela `jobs`. O arquivo não é versionado; cada clone cria sua cópia local. Se o arquivo não existir, crie a tabela com o comando abaixo (ele também cria o arquivo do banco):
 
 ```bash
 node -e "require('./models/job').sync().then(() => process.exit())"
@@ -103,7 +103,7 @@ Campos da tabela `jobs`:
 
 | Método | Rota | Descrição |
 | --- | --- | --- |
-| `GET` | `/` | Lista as vagas. Aceita `?job=termo` para buscar pelo título |
+| `GET` | `/` | Lista as vagas. Aceita `?job=termo` para buscar pelo título ou empresa |
 | `GET` | `/jobs/view/:id` | Exibe os detalhes de uma vaga (404 se não existir) |
 | `GET` | `/jobs/add` | Exibe o formulário de cadastro |
 | `POST` | `/jobs/add` | Salva a vaga e redireciona para a página inicial |
@@ -145,7 +145,7 @@ Os estilos ficam em `public/css/styles.css`, organizados por seção, com as cor
 ## Melhorias futuras
 
 - Edição e exclusão de vagas
-- Busca também por empresa e filtros (faixa salarial, tipo de contrato)
+- Filtros (faixa salarial, tipo de contrato)
 - Paginação da lista de vagas
 - Autenticação para quem publica vagas
 

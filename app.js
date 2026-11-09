@@ -40,7 +40,10 @@ app.get('/', (req, res) => {
 
     if (search) {
         options.where = {
-            title: { [Op.like]: query }
+            [Op.or]: [
+                { title: { [Op.like]: query } },
+                { company: { [Op.like]: query } }
+            ]
         };
     }
 
