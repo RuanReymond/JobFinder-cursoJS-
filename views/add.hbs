@@ -5,10 +5,10 @@
             </div>
             <div id="form-box" class="col-md-12">
                 <h2>preencha os dados da melhor forma possivel para encontrar mais rapido seu dev</h2>
-                <form action="">
+                <form action="/jobs/add" method="POST">
                     <div class="form-group">
                         <label for="title">Titulo da vaga</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Digite o titulo da vaga">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Digite o titulo da vaga" required>
                         <small id="titleHelp" class="form-text text-muted">O titulo da vaga deve ser descritivo e atrativo.</small>
                     </div>
                     <div class="form-group">
@@ -31,7 +31,7 @@
                         <input type="text" class="form-control" id="salary" name="salary" placeholder="Digite o salário da vaga" required>
                         <small id="salaryHelp" class="form-text text-muted">O salário deve ser realista e competitivo.</small>
                     </div>
-                    <input type="hidden" name="newJob" value="1">
+                    <input type="hidden" name="new_job" value="1">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
             </div>

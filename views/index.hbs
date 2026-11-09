@@ -1,7 +1,7 @@
 <div id="top-container" class="container-fluid">
         <h1 id="main-tittle" class="text-center">Encontre o emprego ideal para você</h1>
         <p id="main-subtitle" class="text-center">Explore oportunidades de trabalho em diversas áreas e encontre a vaga perfeita para sua carreira.</p>
-        <form id="search-form" class="form-inline" action="">
+        <form id="search-form" class="form-inline" action="/" method="GET">
             <div class="form-group col-md-10">
                 <input type="text" class="form-control w-100" id="job" name="job" placeholder="Digite o cargo ou empresa">
             </div>
@@ -14,42 +14,24 @@
         <div id="jobs-container" class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 id="job-list-title">Vagas em destaque</h2>
+                {{#if search}}
+                <h2 id="job-list-title">Resultados da busca por: "{{search}}"</h2>
+                {{else}}
+                <h2 id="job-list-title">Vagas em destaque</h2>
+                {{/if}}
                     <ul id="jobs-list" class="list-group">
-                        <li class="list-group-item new-job">
+                        {{#each jobs}}
+                        <li class="list-group-item {{#if dataValues.new_job}}new-job{{/if}}">
                             <img src="/img/company.svg" alt="Empresa">
-                            <p>Empresa</p>
-                            <h2>Titulo da Vaga</h2>
-                            <p>R$5.000,00</p>
-                            <span class="new-job-label">Nova</span>
-                            <a class="btn btn-primary" href="job.html">Ver detalhes</a>
-                            </img>
+                            <p>{{dataValues.company}}</p>
+                            <h2>{{#if dataValues.title}}{{dataValues.title}}{{else}}Título não informado{{/if}}</h2>
+                            <p>{{dataValues.salary}}</p>
+                            {{#if dataValues.new_job}}<span class="new-job-label">Nova</span>{{/if}}
+                            <a class="btn btn-primary" href="/jobs/view/{{dataValues.id}}">Ver detalhes</a>
                         </li>
-                        <li class="list-group-item">
-                            <img src="/img/company.svg" alt="Empresa">
-                            <p>Empresa</p>
-                            <h2>Titulo da Vaga</h2>
-                            <p>R$5.000,00</p>
-                            <a class="btn btn-primary" href="job.html">Ver detalhes</a>
-                            </img>
-                        </li>
-                        <li class="list-group-item">
-                            <img src="/img/company.svg" alt="Empresa">
-                            <p>Empresa</p>
-                            <h2>Titulo da Vaga</h2>
-                            <p>R$5.000,00</p>
-                            <a class="btn btn-primary" href="job.html">Ver detalhes</a>
-                            </img>
-                        </li>
-                        <li class="list-group-item">
-                            <img src="/img/company.svg" alt="Empresa">
-                            <p>Empresa</p>
-                            <h2>Titulo da Vaga</h2>
-                            <p>R$5.000,00</p>
-                            <a class="btn btn-primary" href="job.html">Ver detalhes</a>
-                            </img>
-                        </li>
+                        {{/each}}
                     </ul>
+                </div>
             </div>
         </div>
     </main>

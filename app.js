@@ -4,6 +4,9 @@ const app = express();
 const path = require('path');
 const db = require('./db/connection');
 const bodyParser = require('body-parser');
+const Job = require('./models/job');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const PORT = 3000;
 
@@ -17,9 +20,6 @@ app.engine('hbs', engine({ defaultLayout: 'main', extname: '.hbs' }));
 app.set('view engine', 'hbs');
 
 
-//static folder
-app.use(express.static(path.join(__dirname, 'public')));
-
 //db connection
 db
 .authenticate()
@@ -32,7 +32,24 @@ db
 
 // routes
 app.get('/', (req, res) => {
-    res.render('index');
+    const search = req.query.job;
+    const query = `%${search}%`;
+    const options = {
+        order: [['createdAt', 'DESC']]
+    };
+
+    if (search) {
+        options.where = {
+            title: { [Op.like]: query }
+        };
+    }
+
+    Job.findAll(options)
+        .then(jobs => res.render('index', { jobs, search }))
+        .catch(err => {
+            console.error('Erro ao buscar vagas:', err);
+            res.status(500).send('Não foi possível carregar as vagas.');
+        });
 });
 
 app.get('/add.html', (req, res) => {
